@@ -1,32 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {Route, BrowserRouter, Switch } from 'react-router-dom';
+const express = require('express');
+const morgan = require('morgan');
+const path = require('path');
+const { mongoose } = require('./database');
+const app = express();
 
-import {Crud}  from './pages';
-import * as serviceWorker from './serviceWorker';
-import Layout from './Component/Layout';
-import Login from './Component/Login';
+// Settings
 
-import './index.css';
-import 'antd/dist/antd.css';
-//import App from './App';
-function App() {
-    return (
-        <BrowserRouter>
-          <Route path="/login" component={Login} />
-          <Layout>
-            <Switch>
-             <Route exact path="/" component={Crud} />
-            </Switch>
-          </Layout>
-        </BrowserRouter>
-    );
-  }
+app.set('port',process.env.PORT || 4000);
 
+// Middelwares
 
-ReactDOM.render(<App />, document.getElementById('root'));
+app.use(morgan('dev'));
+app.use(express.json());
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// Routes 
+
+app.use('/api/tasks' , require('./routes/task.routes'));
+
+//Static files
+
+//console.log(path.join(__dirname, 'public'));
+app.use(express.static(path.join(__dirname, 'public')));
+
+//starting the server
+
+app.listen(4000, () =>{
+
+    console.log('server on port 4000');
+});
