@@ -6,10 +6,11 @@
     "express": "^4.17.0",
     "mongodb": "^3.2.5",
     "mongoose": "^5.5.11",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
   },
   "scripts": {
-
     "start": "node src/index.js",
     "dev": "nodemon src/index.js"
   },
