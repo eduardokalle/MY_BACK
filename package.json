@@ -5,7 +5,7 @@
   "dependencies": {
     "express": "^4.17.0",
     "mongodb": "^3.2.5",
-    "mongoose": "^5.5.11",
+    "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"
